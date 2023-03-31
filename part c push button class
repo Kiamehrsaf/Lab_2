@@ -1,0 +1,50 @@
+main
+
+#include "PUB_State.h"
+PUB_State Btn(5,100);
+
+void setup() {
+Serial.begin(9600);
+}
+
+void loop() {
+Btn.Display();
+}
+
+header
+#ifndef PUB_State_H
+#define PUB_State_H
+#include "arduino.h"
+
+class PUB_State{
+  public:
+  PUB_State(int button, int delay);
+  void Display();
+  int _button;
+  int _delay;
+};
+#endif
+
+cpp
+#include "PUB_State.h"
+
+PUB_State::PUB_State(int button, int button_delay){
+  pinMode(button, INPUT_PULLUP);
+  _button = button;
+  _delay = button_delay;
+}
+void PUB_State::Display(){
+  int bValue;
+  bValue=digitalRead(_button);
+  if(bValue==0){
+   Serial.print("Button State: ");
+  Serial.println("LOW");
+  delay(_delay);
+    } 
+    else if(bValue==1){
+   Serial.print("Button State: ");
+  Serial.println("HIGH");
+  delay(_delay);
+    }
+    } 
+  
