@@ -1,0 +1,158 @@
+2b 	7seg Class
+
+#include "SEV_Led.h"
+
+SEV_Led LEDs(13, 12, 11, 10, 9, 8, 7);
+
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  LEDs.Zero();
+  delay(1000);
+  LEDs.One();
+  delay(1000);
+  LEDs.Two();
+  delay(1000);
+  LEDs.Three();
+  delay(1000);
+  LEDs.Four();
+  delay(1000);
+  LEDs.Five();
+  delay(1000);
+  LEDs.Six();
+  delay(1000);
+  LEDs.Seven();
+  delay(1000);
+  LEDs.Eight();
+  delay(1000);
+  LEDs.Nine();
+  delay(1000);
+}
+
+
+header
+
+#ifndef SEV_Led_H
+#define SEV_Led_H
+#include "arduino.h"
+
+class SEV_Led {
+  private: 
+    int zero[7]={1,1,1,1,1,1,0};
+    int one[7]={0,1,1,0,0,0,0};
+    int two[7]={1,1,0,1,1,0,1};
+    int three[7]={1,1,1,1,0,0,1};
+    int four[7]={0,1,1,0,0,1,1};
+    int five[7]={1,0,1,1,0,1,1};
+    int six[7]={1,0,1,1,1,1,1};
+    int seven[7]={1,1,1,0,0,0,0};
+    int eight[7]={1,1,1,1,1,1,1};
+    int nine[7]={1,1,1,1,0,1,1};
+    int pins[7];
+    
+  public:
+    SEV_Led();
+    SEV_Led(int pinA, int pinB, int pinC, int pinD, int pinE, int pinF, int pinG);
+    int _pinA;
+    int _pinB;
+    int _pinC;
+    int _pinD;
+    int _pinE;
+    int _pinF;
+    int _pinG;
+
+    
+    void Zero();
+    void One();
+    void Two();
+    void Three();
+    void Four();
+    void Five();
+    void Six();
+    void Seven();
+    void Eight();
+    void Nine();
+    
+};
+
+#endif
+
+
+cpp
+#include "SEV_Led.h"
+
+SEV_Led::SEV_Led(int pinA, int pinB, int pinC, int pinD, int pinE, int pinF, int pinG){
+  
+  
+  pinMode(pinA, OUTPUT);
+  pinMode(pinB, OUTPUT);
+  pinMode(pinC, OUTPUT);
+  pinMode(pinD, OUTPUT);
+  pinMode(pinE, OUTPUT);
+  pinMode(pinF, OUTPUT);
+  pinMode(pinG, OUTPUT);
+  
+  pins[0] = pinA;
+  pins[1]   = pinB;
+  pins[2]   = pinC;
+  pins[3] = pinD;
+  pins[4]   = pinE;
+  pins[5]   = pinF;
+  pins[6]  = pinG;
+  
+}                                                                                                                                                                                                 
+
+void SEV_Led::Zero(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],zero[i]);
+    }
+  }
+
+void SEV_Led::One(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],one[i]);
+    }
+  }
+  void SEV_Led::Two(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],two[i]);
+    }
+  }
+  void SEV_Led::Three(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],three[i]);
+    }
+  }
+  void SEV_Led::Four(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],four[i]);
+    }
+  }
+  void SEV_Led::Five(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],five[i]);
+    }
+  }
+void SEV_Led::Six(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],six[i]);
+    }
+  }
+  void SEV_Led::Seven(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],seven[i]);
+    }
+  }
+  void SEV_Led::Eight(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],eight[i]);
+    }
+  }
+  void SEV_Led::Nine(){
+  for (int i=0;i<8;i++){
+    digitalWrite(pins[i],nine[i]);
+    }
+  }
